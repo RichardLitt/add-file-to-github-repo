@@ -80,7 +80,7 @@ $ add-file-to-github-repo --help
     -p, --path    Where to put the file
 
   Examples
-    $ GH_TOKEN=abc... add-file-to-github-repo -p ".github/first-timers.yml" -r "RichardLitt/add-file-to-github-repo"
+    $ GITHUB_TOKEN=abc... add-file-to-github-repo -p ".github/first-timers.yml" -r "RichardLitt/add-file-to-github-repo"
 ```
 
 ## Contribute
