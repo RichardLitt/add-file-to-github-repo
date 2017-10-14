@@ -13,21 +13,28 @@ const github = axios.create({
   }
 })
 
+// Not tested, because don't want to overload their API
+// This has the dual benefit of validating the GitHub repository
+async function getDefaultBranch (repository) {
+  const {data: {default_branch: branch}} = await github.get(`/repos/${repository}`)
+  return branch
+}
+
 module.exports = async function request (file, repository, opts) {
   // Validate all the things
   await lib.validate(file, repository, opts)
 
   // Get file contents
-  const fileContents = await lib.getFileContents(file)
-
+  const content = await lib.getFileContents(file)
   const path = opts.path || file
+  const branch = opts.branch || await getDefaultBranch(repository)
 
   // Put
   await github.put(`/repos/${repository}/contents/${path}`, {
-    content: fileContents,
+    content,
     message: opts.message || `chore(${file}): init file`,
-    path: path,
-    branch: opts.branch || 'master' // The only optional arg
+    path,
+    branch // The only optional arg
   })
     .catch(err => {
       if (err) {
