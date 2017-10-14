@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 'use strict'
 
-var meow = require('meow')
-var addFileToGithubRepo = require('./')
+const meow = require('meow')
+const addFileToGithubRepo = require('./')
 
 var cli = meow([`
   Usage
-    $ add-file-to-github-repo [input]
+    $ add-file-to-github-repo [file] [repo] <opts>
 
   Options
     -b, --branch  GitHub branch [Default: master]
@@ -16,7 +16,7 @@ var cli = meow([`
     -p, --path    Where to put the file
 
   Examples
-    $ add-file-to-github-repo file -r RichardLitt/add-file-to-github-repo
+    $ add-file-to-github-repo 'file' 'RichardLitt/add-file-to-github-repo'
 `], {
   alias: {
     r: 'repo',
@@ -27,12 +27,7 @@ var cli = meow([`
   }
 })
 
-cli.flags.branch = cli.flags.branch || 'master'
-cli.flags.input = cli.flags.input || cli.input[0]
+const input = cli.flags.input || cli.input[0]
+const repo = cli.flags.repo || cli.input[1]
 
-if (!cli.flags.repo) {
-  console.log('You need to specify a repo! Format: username/repository')
-  process.exit(1)
-}
-
-addFileToGithubRepo(cli.input[0], cli.flags)
+addFileToGithubRepo(input, repo, cli.flags)

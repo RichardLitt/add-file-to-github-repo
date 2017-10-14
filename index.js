@@ -1,9 +1,9 @@
 'use strict'
 
-const fs = require('mz/fs')
-// const path = require('path')
-const axios = require('axios')
+const lib = require('./lib')
 const env = require('./env')
+
+const axios = require('axios')
 const github = axios.create({
   baseURL: 'https://api.github.com',
   headers: {
@@ -12,30 +12,29 @@ const github = axios.create({
     }
   }
 })
-const btoa = require('btoa')
 
-module.exports = addFile
+module.exports = async function request (file, repository, opts) {
+  // Validate all the things
+  await lib.validate(file, repository, opts)
 
-async function addFile (file, opts) {
-  if (opts.repo.indexOf('/') === -1) {
-    throw new Error('You need to specify repo in format user/repo')
-  }
+  // Get file contents
+  const fileContents = await lib.getFileContents(file)
 
-  // Read File
-  const fileContents = await fs.readFileSync(file, 'utf8')
+  const path = opts.path || file
 
-  // Commit
-  await github.put(`/repos/${opts.repo}/contents/${opts.path}`, {
-    path: opts.path || file,
+  // Put
+  await github.put(`/repos/${repository}/contents/${path}`, {
+    content: fileContents,
     message: opts.message || `chore(${file}): init file`,
-    content: btoa(fileContents),
-    branch: opts.branch || 'master'
-  }).catch(err => {
-    if (err) {
-      console.log(`Unable to add ${file}!`, err)
-      process.exit(1)
-    }
-  }).then((res) => {
-    console.log('Done')
+    path: path,
+    branch: opts.branch || 'master' // The only optional arg
   })
+    .catch(err => {
+      if (err) {
+        console.log(`Unable to add ${file}!`, err)
+        process.exit(1)
+      }
+    }).then((res) => {
+      console.log('Done')
+    })
 }

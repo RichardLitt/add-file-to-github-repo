@@ -1,7 +1,6 @@
 # add-file-to-github-repo
 
-[![Build Status](https://travis-ci.org/RichardLitt/add-file-to-github-repo.svg?branch=master)](https://travis-ci.org/RichardLitt/add-file-to-github-repo)
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://travis-ci.org/RichardLitt/add-file-to-github-repo.svg?branch=master)](https://travis-ci.org/RichardLitt/add-file-to-github-repo) [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 > Add a file to a GitHub repository
 
@@ -16,21 +15,27 @@ $ npm install --save add-file-to-github-repo
 ```js
 const addFileToGithubRepo = require('add-file-to-github-repo');
 
-addFileToGithubRepo('unicorns', {
-  path: '.github/unicorns', repo: 'RichardLitt/here'
+addFileToGithubRepo('unicorns', 'RichardLitt/here', {
+  path: '.github/unicorns'
 })
 //=> 'Done'
 ```
 
 ## API
 
-### addFileToGithubRepo(input, [options])
+### addFileToGithubRepo(file, repository, [options])
 
-##### input
+##### file
 
 Type: `string`
 
 The file.
+
+#### repo
+
+Type: `string`
+
+In the format 'user/repo'
 
 #### options
 
@@ -40,12 +45,6 @@ Type: `string`
 Default: `master`
 
 The branch to commit to.
-
-#### repo
-
-Type: `string`
-
-In the format 'user/repo'
 
 #### message
 
@@ -70,17 +69,17 @@ $ npm install --global add-file-to-github-repo
 $ add-file-to-github-repo --help
 
   Usage
-    add-file-to-github-repo [input]
+    $ add-file-to-github-repo [file] [repo] <opts>
 
   Options
     -b, --branch  GitHub branch [Default: master]
-    -i, --input   Manually specify input
+    -i, --input   Manually specify input file
     -r, --repo    Repository in form 'user/repo'
     -m, --message Commit message
     -p, --path    Where to put the file
 
   Examples
-    $ add-file-to-github-repo -p ".github/first-timers.yml" -r "RichardLitt/add-file-to-github-repo"
+    $ add-file-to-github-repo 'file' 'RichardLitt/add-file-to-github-repo'
 ```
 
 ## Contribute
@@ -89,4 +88,4 @@ PRs accepted. Check out the [issues](https://github.com/RichardLitt/add-file-to-
 
 ## License
 
-MIT © [Richard Littauer](https://burntfen.com)
+[MIT](LICENSE) © [Richard Littauer](https://burntfen.com)
