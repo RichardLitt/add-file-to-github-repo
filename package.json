@@ -1,6 +1,6 @@
 {
   "name": "add-file-to-github-repo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Add a file to a GitHub repository",
   "license": "MIT",
   "repository": {
@@ -12,7 +12,7 @@
   "author": {
     "name": "Richard Littauer",
     "email": "richard.littauer@gmail.com",
-    "url": "burntfen.com"
+    "url": "https://burntfen.com"
   },
   "bin": "cli.js",
   "scripts": {
@@ -30,12 +30,13 @@
   ],
   "dependencies": {
     "axios": "^0.16.2",
+    "btoa": "^1.1.2",
     "meow": "^3.6.0",
     "mz": "^2.7.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "standard": "^5.4.1",
-    "ava": "^0.9.1"
+    "ava": "^0.22.0",
+    "standard": "^10.0.3"
   }
 }

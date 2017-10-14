@@ -16,28 +16,48 @@ $ npm install --save add-file-to-github-repo
 ```js
 const addFileToGithubRepo = require('add-file-to-github-repo');
 
-addFileToGithubRepo('unicorns');
-//=> 'unicorns & rainbows'
+addFileToGithubRepo('unicorns', {
+  path: '.github/unicorns', repo: 'RichardLitt/here'
+})
+//=> 'Done'
 ```
 
 ## API
 
 ### addFileToGithubRepo(input, [options])
 
-#### input
+##### input
 
 Type: `string`
 
-Lorem ipsum.
+The file.
 
 #### options
 
-##### foo
+#### branch
 
-Type: `boolean`  
-Default: `false`
+Type: `string`
+Default: `master`
 
-Lorem ipsum.
+The branch to commit to.
+
+#### repo
+
+Type: `string`
+
+In the format 'user/repo'
+
+#### message
+
+Type: `string`
+
+The commit message. Default: `chore(filename): init file.`
+
+#### path
+
+Type: `string`
+
+Where to save the file.
 
 
 ## CLI
@@ -53,13 +73,14 @@ $ add-file-to-github-repo --help
     add-file-to-github-repo [input]
 
   Options
-    --foo  Lorem ipsum. [Default: false]
+    -b, --branch  GitHub branch [Default: master]
+    -i, --input   Manually specify input
+    -r, --repo    Repository in form 'user/repo'
+    -m, --message Commit message
+    -p, --path    Where to put the file
 
   Examples
-    $ add-file-to-github-repo
-    unicorns & rainbows
-    $ add-file-to-github-repo ponies
-    ponies & rainbows
+    $ add-file-to-github-repo -p ".github/first-timers.yml" -r "RichardLitt/add-file-to-github-repo"
 ```
 
 ## Contribute
