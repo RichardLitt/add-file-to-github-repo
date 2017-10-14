@@ -72,10 +72,10 @@ $ add-file-to-github-repo --help
     $ add-file-to-github-repo [file] [repo] <opts>
 
   Options
-    -b, --branch  GitHub branch [Default: master]
-    -i, --input   Manually specify input file
-    -r, --repo    Repository in form 'user/repo'
-    -m, --message Commit message
+    -b, --branch  GitHub branch [Default: default_branch of repo]
+    -i, --input   Input file path
+    -r, --repo    Repository. Format: 'user/repo'
+    -m, --message Commit message [Default: chore(filename): init file]
     -p, --path    Where to put the file
 
   Examples
