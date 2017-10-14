@@ -1,0 +1,41 @@
+{
+  "name": "add-file-to-github-repo",
+  "version": "0.0.0",
+  "description": "Add a file to a GitHub repository",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RichardLitt/add-file-to-github-repo.git"
+  },
+  "homepage": "https://github.com/RichardLitt/add-file-to-github-repo",
+  "bugs": "https://github.com/RichardLitt/add-file-to-github-repo/issues",
+  "author": {
+    "name": "Richard Littauer",
+    "email": "richard.littauer@gmail.com",
+    "url": "burntfen.com"
+  },
+  "bin": "cli.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "standard && ava"
+  },
+  "keywords": [
+    "github,",
+    "gh,",
+    "file,",
+    "commit",
+    "cli-app",
+    "cli",
+    ""
+  ],
+  "dependencies": {
+    "axios": "^0.16.2",
+    "meow": "^3.6.0",
+    "mz": "^2.7.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "standard": "^5.4.1",
+    "ava": "^0.9.1"
+  }
+}
