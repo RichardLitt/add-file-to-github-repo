@@ -37,7 +37,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "ava": "^0.23.0",
+    "ava": "^3.0.0",
     "standard": "^11.0.0"
   }
 }
