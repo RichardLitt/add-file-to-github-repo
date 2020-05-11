@@ -31,7 +31,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "btoa": "^1.1.2",
-    "meow": "^3.6.0",
+    "meow": "^7.0.1",
     "mz": "^2.7.0",
     "parse-user-repo": "^1.0.1",
     "path": "^0.12.7"
